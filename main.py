@@ -15,7 +15,7 @@ if __name__ == '__main__':
 
 
 import pandas
-df = pandas.read_csv('/home/user/Загрузки/titanic.csv')
+df = pandas.read_csv('C:/Users/User/PycharmProjects/my_first_project/titanic.csv')
 
 print(df.columns)
 print(df.shape[0])
@@ -46,12 +46,10 @@ print(surv_man())
 
 def surv_class():
     var = {
-        'First': (df[(df['Pclass'] == 1) & (df['Survived'] == 1)].shape[0] / df[df['Survived'] == 1].shape[0]) * 100,
-        'Second': (df[(df['Pclass'] == 2) & (df['Survived'] == 1)].shape[0] / df[df['Survived'] == 1].shape[0]) * 100,
-        'Third': (df[(df['Pclass'] == 3) & (df['Survived'] == 1)].shape[0] / df[df['Survived'] == 1].shape[0]) * 100
+        (df[(df['Pclass'] == 1) & (df['Survived'] == 1)].shape[0] / df[df['Survived'] == 1].shape[0]) * 100 : 'First',
+        (df[(df['Pclass'] == 2) & (df['Survived'] == 1)].shape[0] / df[df['Survived'] == 1].shape[0]) * 100 : 'Second',
+        (df[(df['Pclass'] == 3) & (df['Survived'] == 1)].shape[0] / df[df['Survived'] == 1].shape[0]) * 100 : 'Third'
     }
-    # min = min(var.values())
-    min(var.values()) in var
-    return (min(var()))
+    return (var.get(min(var.keys())) + ' class most likely did not survive')
 
 print(surv_class())
